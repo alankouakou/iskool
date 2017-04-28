@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import net.ycod3r.domain.Eleve;
 import net.ycod3r.domain.Evaluation;
@@ -30,5 +31,8 @@ public interface NoteRepo extends JpaRepository<Note, Long> {
 	
 	@Query("Select new net.ycod3r.domain.Moyenne(n.eleve, AVG(n.valeur) as moyenne) FROM Note n GROUP BY n.eleve")
 	List<Moyenne> findMoyennes();
+
+	@Query("Select new net.ycod3r.domain.Moyenne(n.eleve, AVG(n.valeur) as moyenne) FROM Note n WHERE n.eleve.classe.id=:classeId GROUP BY n.eleve")
+	List<Moyenne> findMoyennesByClasseId(@Param("classeId") Long classeId);
 
 }

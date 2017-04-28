@@ -78,4 +78,11 @@ public class NoteController {
 		return "moyennes";
 	}
 
+	@GetMapping("/moyennes/{id}")
+	public String moyenneEleve(Model model, @PathVariable Long id){
+		List<Moyenne> moyennes = noteRep.findMoyennesByClasseId(id);
+		
+		model.addAttribute("moyennes",moyennes);
+		return "moyennes_classe";
+	}
 }
