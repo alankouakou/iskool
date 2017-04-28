@@ -1,0 +1,28 @@
+		<div class="row ">
+			<div class="col-md-4">
+				<p class="">
+					<i class="fa fa-cog fa-2x fa-fw"></i>{{ message }}
+				</p>
+				<ul>
+					<li data-ng-repeat="c in typeChambres | orderBy:'-tarifStandard'">{{
+						c.name }} - {{ c.tarifStandard | currency }}</li>
+				</ul>
+			</div>
+			<div class="col-md-4" ng-show="typeChambre.name">
+				<h3><i class="fa fa-bed"></i> Categorie chambre</h3>
+				<h3>Type : {{typeChambre.name}} </h3> 
+				<h3>Prix Standard: {{typeChambre.tarifStandard | currency }}</h3>
+			</div>
+			<div class="col-md-2">
+				<div class="input-group">
+					<input type="text" class="form-control inline col-sm-2"
+						ng-model="id" />
+				</div>
+				<span class="input-group-btn">
+					<button class="btn btn-success" type="button"
+						data-ng-click="getTypeChambre(id)">
+						Infos {{typeChambre.name}} <i class="fa fa-bed fa-fw"></i>
+					</button>
+				</span>
+			</div>
+		</div>

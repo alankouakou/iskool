@@ -1,0 +1,26 @@
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu"
+	data-th-fragment="side-bar-menu">
+	<div class="menu_section">
+		<h3>GENERAL</h3>
+		<ul class="nav side-menu">
+
+			<li><a><i class="fa fa-files-o"></i> Gestion des notes <span
+					class="fa fa-chevron-down"></span></a>
+				<ul class="nav child_menu">
+					<li><a th:href="@{/evaluations}"><i class="fa fa-pencil"></i>Evaluations</a></li>
+					<li><a th:href="@{/notes/moyennes}"><i class="fa fa-calculator"></i>Moyennes</a></li>
+					<li><a href="#"><i class="fa fa-bars"></i>Classements</a></li>
+				</ul></li>
+			<li><a><i class="fa fa-windows"></i> Parametres <span
+					class="fa fa-chevron-down"></span></a>
+				<ul class="nav child_menu">
+					<li><a th:href="@{/periodes}">Periodes</a></li>
+					<li><a th:href="@{/classes}">Classes</a></li>
+					<li><a th:href="@{/eleves}"><i class="fa fa-users"></i>Eleves</a></li>
+					<li><a th:href="@{/type-note}">Types d'evaluation</a></li>
+				</ul></li>
+		</ul>
+	</div>
+
+
+</div>
