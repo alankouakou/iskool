@@ -23,16 +23,16 @@ public interface NoteRepo extends JpaRepository<Note, Long> {
 	@Query("select n.eleve.id from Note n WHERE n.evaluation.id=?")
 	List<Long> elevesEvalues(Long  evaluationId);
 	
-	@Query("Select new net.ycod3r.domain.Moyenne(n.eleve, AVG(n.valeur) as moyenne) FROM Note n WHERE n.eleve.id=?")
+	@Query("Select new net.ycod3r.domain.Moyenne(n.eleve, sum(n.valeur*n.evaluation.typeEvaluation.ponderation)/sum(n.evaluation.typeEvaluation.ponderation) as moyenne) FROM Note n WHERE n.eleve.id=?")
 	Moyenne findMoyenneByEleveId(Long id);
 	
 	@Query("Select new net.ycod3r.domain.Moyenne(e, AVG(mark.valeur) as moyenne) FROM Eleve e JOIN e.notes mark")
 	List<Moyenne> findAllMoyennes();
 	
-	@Query("Select new net.ycod3r.domain.Moyenne(n.eleve, AVG(n.valeur) as moyenne) FROM Note n GROUP BY n.eleve")
+	@Query("Select new net.ycod3r.domain.Moyenne(n.eleve, sum(n.valeur*n.evaluation.typeEvaluation.ponderation)/sum(n.evaluation.typeEvaluation.ponderation) as moyenne) FROM Note n GROUP BY n.eleve")
 	List<Moyenne> findMoyennes();
 
-	@Query("Select new net.ycod3r.domain.Moyenne(n.eleve, AVG(n.valeur) as moyenne) FROM Note n WHERE n.eleve.classe.id=:classeId GROUP BY n.eleve")
+	@Query("Select new net.ycod3r.domain.Moyenne(n.eleve, sum(n.valeur*n.evaluation.typeEvaluation.ponderation)/sum(n.evaluation.typeEvaluation.ponderation) as moyenne) FROM Note n WHERE n.eleve.classe.id=:classeId GROUP BY n.eleve")
 	List<Moyenne> findMoyennesByClasseId(@Param("classeId") Long classeId);
 
 }
