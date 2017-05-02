@@ -25,7 +25,6 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
-								<th>Id</th>
 								<th>Classe</th>
 								<th>Date evaluation</th>
 								<th>Type d'evaluation</th>
@@ -35,7 +34,6 @@
 						<tbody>
 
 							<tr th:each="evaluation:${evaluations}">
-								<td th:text="${evaluation.id}"></td>
 								<td th:text="${evaluation.classe}"></td>
 								<td th:text="${{evaluation.dateEvaluation}}"></td>
 								<td th:text="${evaluation.typeEvaluation}"></td>

@@ -95,8 +95,6 @@ public class EvaluationController {
 		List<Note> notes = noteRep.findByEvaluationOrderByValeurDesc(evaluation);
 		System.out.println("Liste des notes: " + notes);
 		model.addAttribute("notes",notes);
-		//long effectif  = eleveRep.countByClasse(classe);
-		//model.addAttribute("effectif", effectif);
 		System.out.println("Notes:"+nbNotes+" effectif:"+nbEleves);
 		return "notes-evaluation";
 	}

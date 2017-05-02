@@ -46,6 +46,7 @@ public class EleveMgr {
 	
 	public List<Eleve> findNonEvaluesByEvaluationId(Long evaluationId){
 		List<Eleve> nonEvalues = new ArrayList<Eleve>();
+		
 		Collection<Long> evalues =  eleveRep.findElevesEvalues(evaluationId);
 		Classe classe = evaluationRep.findOne(evaluationId).getClasse();
 		
