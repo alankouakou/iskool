@@ -2,6 +2,7 @@ package net.ycod3r.domain;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,7 @@ public class Note {
 	private long id;
 	private Date date;
 	private Double valeur;
-	@ManyToOne
+	@ManyToOne(cascade={CascadeType.REMOVE, CascadeType.MERGE})
 	private Evaluation evaluation;
 	@ManyToOne
 	private Eleve eleve;

@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 public class Evaluation {
 	
@@ -35,7 +37,7 @@ public class Evaluation {
 	
 	private Date dateMaj;
 	
-	@OneToMany(mappedBy="evaluation")
+	@OneToMany(mappedBy="evaluation", orphanRemoval=true)
 	Set<Note> notes = new HashSet<Note>();
 	
 	public Set<Note> getNotes() {

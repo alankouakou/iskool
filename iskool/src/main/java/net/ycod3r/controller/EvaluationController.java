@@ -135,7 +135,7 @@ public class EvaluationController {
 	
 	@GetMapping("/delete/{id}")
 	public String deleteAction(@PathVariable long id){
-		classeRep.delete(id);
+		evaluationRep.delete(id);
 		return "redirect:/";
 	}
 	
