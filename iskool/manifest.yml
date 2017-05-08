@@ -1,0 +1,6 @@
+  applications:
+   - name: iskool
+     host: iskool
+     path: target/iskool-0.0.1-SNAPSHOT.jar
+     memory: 512M
+     instances: 1

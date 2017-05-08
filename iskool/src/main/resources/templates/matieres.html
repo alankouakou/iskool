@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragments/layout}"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Matieres</title>
+
+</head>
+
+<body data-ng-app="MyApp">
+
+	<!-- page content -->
+	<div class="right_col" role="main" data-layout-fragment="content">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="x_panel">
+				<div class="x_title">
+					<h2>
+						Gestion des matieres <small>Listing </small>
+					</h2>
+					<a th:href="@{/matieres/add}" class="btn btn-md btn-success pull-right"><i class="fa fa-plus-circle"></i> Ajouter
+						matiere</a>
+					<div class="clearfix"></div>
+				</div>
+				<div class="x_content" style="display: block;">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Libelle</th>
+								<th>Coefficient</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr th:each="matiere: ${matieres}">
+								<td th:text="${matiere.name}"></td>
+								<td th:text="${matiere.coefficient}"></td>
+								<td><a th:href="@{/matieres/edit/{id}(id=${matiere.id}) }" class="btn btn-default btn-xs">Modifier</a>
+									<a th:href="@{/matieres/delete/{id}(id=${matiere.id}) }" class="btn btn-info btn-xs">Suppr.</a>
+									<a th:href="@{/matieres/show/{id}(id=${matiere.id}) }" class="btn btn-primary btn-xs">
+										Voir <span class="fa fa-search"></span>
+									</a>
+									</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+	<!-- /page content -->
+</body>
+</html>
