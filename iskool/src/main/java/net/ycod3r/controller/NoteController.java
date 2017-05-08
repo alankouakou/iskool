@@ -1,5 +1,6 @@
 package net.ycod3r.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import net.ycod3r.business.EleveMgr;
+import net.ycod3r.business.NoteMgr;
+import net.ycod3r.domain.Eleve;
 import net.ycod3r.domain.Moyenne;
 import net.ycod3r.domain.Note;
 import net.ycod3r.repository.EvaluationRepo;
-import net.ycod3r.repository.NoteRepo;
+import net.ycod3r.utils.MoyenneComparatorDesc;
 
 @Controller
 @RequestMapping("/notes")
@@ -24,19 +28,36 @@ public class NoteController {
 	EvaluationRepo evalRep;
 
 	@Autowired
-	private NoteRepo noteRep;
+	private NoteMgr noteMgr;
+	
+	@Autowired
+	private EleveMgr eleveMgr;
+	
 
 
 	@GetMapping
 	public String index(Model model) {
 
-		List<Note> notes = noteRep.findAll();
+		List<Note> notes = noteMgr.findAll();
 		model.addAttribute("notes", notes);
 		return "notes";
 	}
-
-
-
+	
+	@GetMapping("/eleve/{id}")
+	public String notesByEleveId(@PathVariable Long id, Model model){
+		List<Note> notes= noteMgr.findByEleveId(id);
+		Eleve eleve = eleveMgr.findOne(id);
+		Moyenne moyenne = noteMgr.findMoyenneByEleveId(id);
+		Long nbNotes = noteMgr.countByEleve(eleve);
+		
+		model.addAttribute("moyenne",moyenne);
+		model.addAttribute("nbNotes", nbNotes);
+		model.addAttribute("eleve",eleve);
+		model.addAttribute("notes",notes);
+		return "notes-eleve";
+	}
+	
+	
 	@GetMapping("/add")
 	public String add(Model model) {
 		model.addAttribute("note", new Note());
@@ -45,7 +66,7 @@ public class NoteController {
 
 	@GetMapping("/edit/{id}")
 	public String edit(Model model, @PathVariable long id) {
-		Note note = noteRep.findOne(id);
+		Note note = noteMgr.findOne(id);
 		System.out.println(note.getEleve().getNom());
 		model.addAttribute("eleves",note.getEleve());
 		model.addAttribute("note", note);
@@ -60,28 +81,29 @@ public class NoteController {
 			
 			return "form-note";
 		}
-		noteRep.save(note);
+		noteMgr.save(note);
 		return "redirect:/evaluations/"+note.getEvaluation().getId()+"/notes";
 	}
 
 	@GetMapping("/delete/{id}")
 	public String deleteAction(@PathVariable long id) {
-		noteRep.delete(id);
+		noteMgr.delete(id);
 		return "redirect:/notes";
 	}
 	
 	
 	@GetMapping("/moyennes")
 	public String moyenneEleve(Model model){
-		List<Moyenne> moyennes = noteRep.findMoyennes();
+		List<Moyenne> moyennes = noteMgr.findMoyennes();
+		Collections.sort(moyennes, new MoyenneComparatorDesc());
 		model.addAttribute("moyennes",moyennes);
 		return "moyennes";
 	}
 
 	@GetMapping("/moyennes/{id}")
 	public String moyenneEleve(Model model, @PathVariable Long id){
-		List<Moyenne> moyennes = noteRep.findMoyennesByClasseId(id);
-		
+		List<Moyenne> moyennes = noteMgr.findMoyennesByClasseId(id);
+		Collections.sort(moyennes,new MoyenneComparatorDesc());
 		model.addAttribute("moyennes",moyennes);
 		return "moyennes_classe";
 	}

@@ -54,9 +54,9 @@
 								<td><a href="#"
 									class="btn btn-default btn-xs">Modifier</a> <a
 									href="#"
-									class="btn btn-info btn-xs">Suppr.</a> <a href="#"
-									class="btn btn-primary btn-xs"> Voir <span
-										class="fa fa-search"></span>
+									class="btn btn-info btn-xs">Suppr.</a> <a th:href="@{/notes/eleve/{id}(id=${moyenne.eleve.id}) }"
+									class="btn btn-primary btn-xs"> Voir notes <span
+										class="fa fa-pencil"></span>
 								</a></td>
 							</tr>
 						</tbody>

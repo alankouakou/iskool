@@ -13,11 +13,11 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
-import net.ycod3r.converters.BasicDateConverter;
 import net.ycod3r.converters.ClasseFormatter;
 import net.ycod3r.converters.EvaluationFormatter;
 import net.ycod3r.converters.FrenchDateFormatter;
 import net.ycod3r.converters.LocalDateConverter;
+import net.ycod3r.converters.MatiereFormatter;
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 
 @Configuration
@@ -28,6 +28,9 @@ public class ThymeleafWebMvcConfig extends WebMvcConfigurerAdapter {
 	
 	@Autowired
 	private EvaluationFormatter evaluationFormatter;
+	
+	@Autowired
+	private MatiereFormatter matiereFormatter;
 
 	@Bean
 	public ViewResolver viewResolver() {
@@ -60,8 +63,8 @@ public class ThymeleafWebMvcConfig extends WebMvcConfigurerAdapter {
 	public void addFormatters(FormatterRegistry registry) {
 		registry.addConverter(new LocalDateConverter("dd/MM/yyyy"));
 		registry.addConverter(new LocalDateConverter("dd-MM-yyyy"));
-		//registry.addConverter(new BasicDateConverter("dd/MM/yyyy"));
 		registry.addFormatter(new FrenchDateFormatter("dd/MM/yyyy"));
+		registry.addFormatter(matiereFormatter);
 		registry.addFormatter(classeFormatter);
 		registry.addFormatter(evaluationFormatter);
 		

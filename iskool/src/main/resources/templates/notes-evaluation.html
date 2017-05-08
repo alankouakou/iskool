@@ -14,7 +14,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2 th:text="${evaluation.classe} + ' - '+ ${evaluation.typeEvaluation}+' du '+${{evaluation.dateEvaluation}}">
+					<h2 th:text="${evaluation.classe} + ' - '+ ${evaluation.typeEvaluation} + ' de ' + ${{evaluation.matiere}} +' du '+${{evaluation.dateEvaluation}}">
 					</h2>
 					<h5 class="pull-right">
 						Total : <span th:text="${nbNotes}"></span> Notes
@@ -56,7 +56,7 @@
 									th:href="@{'/notes/delete/' + ${note.id} }"
 									class="btn btn-info btn-xs">Suppr.</a> <a th:href="@{'/notes/edit/' + ${note.id} }"
 									class="btn btn-primary btn-xs"> Voir <span
-										class="fa fa-search"></span>
+										class="fa fa-pencil"></span>
 								</a></td>
 							</tr>
 						</tbody>

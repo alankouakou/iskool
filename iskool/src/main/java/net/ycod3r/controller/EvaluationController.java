@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import net.ycod3r.business.EleveMgr;
+import net.ycod3r.business.MatiereMgr;
 import net.ycod3r.domain.Classe;
 import net.ycod3r.domain.Eleve;
 import net.ycod3r.domain.Evaluation;
+import net.ycod3r.domain.Matiere;
 import net.ycod3r.domain.Note;
 import net.ycod3r.domain.TypeNote;
 import net.ycod3r.repository.ClasseRepo;
@@ -45,6 +47,9 @@ public class EvaluationController {
 	
 	@Autowired
 	private EleveMgr eleveMgr;
+	
+	@Autowired
+	private MatiereMgr matiereMgr;	
 
 
 	@ModelAttribute("classes")
@@ -59,6 +64,11 @@ public class EvaluationController {
 		return typeNoteRep.findAll();
 	}
 	
+	@ModelAttribute("matieres")
+	private List<Matiere> getMatiere()
+	{
+		return matiereMgr.findAll();
+	}
 	
 	
 	@GetMapping

@@ -32,7 +32,8 @@ public class Moyenne {
 	public void setMoyenne(Double moyenne) {
 		this.moyenne = moyenne;
 	}
-	
+
+
 	
 
 }

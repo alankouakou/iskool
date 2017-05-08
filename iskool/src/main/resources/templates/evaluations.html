@@ -35,12 +35,13 @@
 
 							<tr th:each="evaluation:${evaluations}">
 								<td th:text="${evaluation.classe}"></td>
+								<td th:text="${evaluation.matiere.name}"></td>
 								<td th:text="${{evaluation.dateEvaluation}}"></td>
 								<td th:text="${evaluation.typeEvaluation}"></td>
 								<td><a th:href="@{/evaluations/edit/{id}(id=${evaluation.id}) }" class="btn btn-default btn-xs">Modifier</a>
 									<a th:href="@{/evaluations/delete/{id}(id=${evaluation.id}) }" class="btn btn-info btn-xs">Suppr.</a>
 									<a th:href="@{/evaluations/{id}/notes(id=${evaluation.id}) }" class="btn btn-primary btn-xs">
-										Voir notes<span class="fa fa-search"></span>
+										Voir notes <span class="fa fa-pencil"></span>
 									</a>
 									</td>
 							</tr>

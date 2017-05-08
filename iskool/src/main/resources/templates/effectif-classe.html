@@ -57,9 +57,9 @@
 								<td><a th:href="@{'/eleves/edit/' + ${eleve.id} }"
 									class="btn btn-default btn-xs">Modifier</a> <a
 									th:href="@{'/eleves/delete/' + ${eleve.id} }"
-									class="btn btn-info btn-xs">Suppr.</a> <a th:href="@{/eleves}"
-									class="btn btn-primary btn-xs"> Voir <span
-										class="fa fa-search"></span>
+									class="btn btn-info btn-xs">Suppr.</a> <a th:href="@{/notes/eleve/{id}(id=${eleve.id}) }"
+									class="btn btn-primary btn-xs"> Voir notes <span
+										class="fa fa-pencil"></span>
 								</a></td>
 							</tr>
 						</tbody>

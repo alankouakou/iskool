@@ -25,10 +25,15 @@ public class Evaluation {
 	private Date dateEvaluation;
 	
 	@ManyToOne
+	private Matiere matiere;
+
+	@ManyToOne
 	private Classe classe;
 	
 	@ManyToOne
 	private TypeNote typeEvaluation;
+	
+	private Date dateMaj;
 	
 	@OneToMany(mappedBy="evaluation")
 	Set<Note> notes = new HashSet<Note>();
@@ -41,18 +46,25 @@ public class Evaluation {
 		this.notes = notes;
 	}
 
-	private Date dateMaj;
 	
 	
+	public Matiere getMatiere() {
+		return matiere;
+	}
+
+	public void setMatiere(Matiere matiere) {
+		this.matiere = matiere;
+	}	
 	
 	public Evaluation() {
 		this.dateMaj= new Date();
 	}
 	
-	public Evaluation(Date dateEvaluation, Classe classe, TypeNote typeEvaluation) {
+	public Evaluation(Date dateEvaluation, Classe classe, Matiere matiere, TypeNote typeEvaluation) {
 		super();
 		this.dateEvaluation = dateEvaluation;
 		this.classe = classe;
+		this.matiere  = matiere;
 		this.typeEvaluation = typeEvaluation;
 		this.dateMaj = new Date();
 	}

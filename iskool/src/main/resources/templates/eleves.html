@@ -25,7 +25,6 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
-								<th>Id</th>
 								<th>Nom</th>
 								<th>Prenom</th>
 								<th>Date de naissance</th>
@@ -36,7 +35,6 @@
 						<tbody>
 
 							<tr th:each="eleve:${eleves}">
-								<td th:text="${eleve.id}"></td>
 								<td th:text="${eleve.nom}"></td>
 								<td th:text="${eleve.prenom}"></td>
 								<td th:text="${{eleve.dateNaissance}}"></td>

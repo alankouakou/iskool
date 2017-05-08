@@ -16,6 +16,10 @@ public interface NoteRepo extends JpaRepository<Note, Long> {
 	List<Note> findByEvaluation(Evaluation evaluation);
 	
 	List<Note> findByEleve(Eleve eleve);
+	
+	List<Note> findByEleveId(Long id);
+	
+	Long countByEleve(Eleve eleve);
 
 	long countByEvaluation(Evaluation evaluation);
 	List<Note> findByEvaluationOrderByValeurDesc(Evaluation evaluation);
@@ -23,7 +27,7 @@ public interface NoteRepo extends JpaRepository<Note, Long> {
 	@Query("select n.eleve.id from Note n WHERE n.evaluation.id=?")
 	List<Long> elevesEvalues(Long  evaluationId);
 	
-	@Query("Select new net.ycod3r.domain.Moyenne(n.eleve, sum(n.valeur*n.evaluation.typeEvaluation.ponderation)/sum(n.evaluation.typeEvaluation.ponderation) as moyenne) FROM Note n WHERE n.eleve.id=?")
+	@Query("Select new net.ycod3r.domain.Moyenne(n.eleve, sum(n.valeur*n.evaluation.typeEvaluation.ponderation)/sum(n.evaluation.typeEvaluation.ponderation) as moyenne) FROM Note n WHERE n.eleve.id=? GROUP BY n.eleve")
 	Moyenne findMoyenneByEleveId(Long id);
 	
 	@Query("Select new net.ycod3r.domain.Moyenne(e, AVG(mark.valeur) as moyenne) FROM Eleve e JOIN e.notes mark")

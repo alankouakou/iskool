@@ -28,6 +28,10 @@ public class EleveMgr {
 	@Autowired
 	private NoteRepo noteRep;
 	
+	public Eleve findOne(Long id){
+		return eleveRep.findOne(id);
+	}
+	
 	public List<Eleve> findAllByOrderByNomAscPrenomAsc(){
 		return eleveRep.findAllByOrderByNomAscPrenomAsc();
 	};
