@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Periode {
@@ -12,6 +13,8 @@ public class Periode {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	private String name;
+	@ManyToOne
+	private AnneeAcademique anneeAcademique;
 	
 	public Periode(){}
 
@@ -34,6 +37,14 @@ public class Periode {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public AnneeAcademique getAnneeAcademique() {
+		return anneeAcademique;
+	}
+
+	public void setAnneeAcademique(AnneeAcademique anneeAcademique) {
+		this.anneeAcademique = anneeAcademique;
 	}
 	
 	

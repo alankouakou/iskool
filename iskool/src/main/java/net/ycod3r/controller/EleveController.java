@@ -1,5 +1,6 @@
 package net.ycod3r.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import net.ycod3r.domain.Classe;
 import net.ycod3r.domain.Eleve;
+import net.ycod3r.domain.Sexe;
+import net.ycod3r.domain.SituationFamiliale;
 import net.ycod3r.repository.ClasseRepo;
 import net.ycod3r.repository.EleveRepo;
 
@@ -35,6 +38,16 @@ public class EleveController {
 	private List<Classe> getClasses() {
 		List<Classe> classes = classeRep.findAll();
 		return classes;
+	}
+	
+	@ModelAttribute("genres")
+	private List<Sexe> getGenres(){
+		return Arrays.asList(Sexe.values());
+	}
+	
+	@ModelAttribute("etatCivils")
+	private List<SituationFamiliale> getEtatCivils(){
+		return Arrays.asList(SituationFamiliale.values());
 	}
 
 	@RequestMapping(method = RequestMethod.GET)

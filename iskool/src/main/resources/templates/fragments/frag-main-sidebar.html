@@ -1,0 +1,112 @@
+  <aside class="main-sidebar" data-th-fragment="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 427px;"><section class="sidebar" style="height: 427px; overflow: hidden; width: auto;">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img th:src="@{/img/avatar.png}" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>iSkool</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input name="q" class="form-control" placeholder="Search..." type="text">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu tree" data-widget="tree">
+        <li><a href="#" th:href="@{/dashboard}"><i class="fa fa-dashboard"></i> <span>Tableau de bord</span></a></li>
+        <li class="treeview active menu-open">
+          <a th:href="@{/eleves}">
+            <i class="fa fa-graduation-cap"></i>
+            <span>Etudiants</span>
+            <span class="pull-right-container">
+              <span class="label pull-right bg-orange">500</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#" th:href="@{/enseignants}">
+            <i class="fa fa-briefcase"></i> <span>Enseignants</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">25</small>
+            </span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-users"></i>
+            <span>Parents</span>
+            <span class="pull-right-container">
+              <i class="label label-primary pull-right">200</i>
+            </span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="#" th:href="@{/classes}">
+            <i class="fa fa-laptop"></i>
+            <span>Classes</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+         
+        </li>
+        <li class="treeview">
+          <a href="#" th:href="@{/matieres}">
+            <i class="fa fa-book"></i> <span>Mati&egrave;res</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#" th:href="@{/evaluations}" >
+            <i class="fa fa-edit"></i> <span>Devoirs</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-yellow">12</small>
+              <small class="label pull-right bg-red">5</small>
+              <small class="label pull-right bg-green">16</small>
+            </span>
+          </a>
+        </li>
+        
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-table"></i> <span>Emploi du temps</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
+            <li><a href="../tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-calendar"></i> <span>Absences</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-red">3</small>
+              <small class="label pull-right bg-blue">17</small>
+            </span>
+          </a>
+        </li>
+
+
+        <li><a href="#"><i class="fa fa-money text-green"></i> <span>Versements scolarit&eacute;</span></a></li>
+        <li><a href="#"><i class="fa fa-cutlery"></i> <span>Cantine</span></a></li>
+        <li><a href="#"><i class="fa fa-bus text-aqua"></i> <span>Transport</span></a></li>
+      </ul>
+    </section><div class="slimScrollBar" style="background: rgba(0, 0, 0, 0.2) none repeat scroll 0% 0%; width: 3px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 186.813px;"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51) none repeat scroll 0% 0%; opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+    <!-- /.sidebar -->
+  </aside>

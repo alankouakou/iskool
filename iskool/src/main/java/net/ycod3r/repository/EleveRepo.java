@@ -2,16 +2,13 @@ package net.ycod3r.repository;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import net.ycod3r.domain.Classe;
 import net.ycod3r.domain.Eleve;
-import net.ycod3r.domain.Evaluation;
 
 @Repository
 public interface EleveRepo extends JpaRepository<Eleve, Long> {

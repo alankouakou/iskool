@@ -14,11 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import net.ycod3r.domain.Classe;
-import net.ycod3r.domain.Eleve;
 import net.ycod3r.domain.Matiere;
-import net.ycod3r.repository.ClasseRepo;
-import net.ycod3r.repository.EleveRepo;
 import net.ycod3r.repository.MatiereRepo;
 
 @Controller

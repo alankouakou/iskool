@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragments/layout}"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Nouvel eleve</title>
+
+</head>
+
+<body data-ng-app="MyApp">
+
+	<!-- page content -->
+	<section data-layout-fragment="content">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">
+                            Eleve <small> Informations </small>
+                        </h3>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="box-body">
+                    <form id="frmeleve" name="frmeleve" th:object="${eleve}"
+                        th:action="@{/eleves/save}"
+                        class="form-horizontal form-label-left" method="POST">
+                        <input type="hidden" th:field="*{id}" />
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                for="nom">Nom <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" name="nom" th:field="*{nom}"
+                                    class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                for="prenom">Prenom <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" name="prenom" th:field="*{prenom}"
+                                    class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                for="datenaiss">Date de naissance <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" name="datenaiss" th:field="*{dateNaissance}"
+                                    class="form-control col-md-7 col-xs-12" placeholder="ex: 01/01/1970">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                for="classe">Classe <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <select th:unless="${param.classe}" name="classe" th:field="*{classe}"
+                                    class="form-control col-md-7 col-xs-12">
+                                    <option th:each="classe: ${classes}" th:value="${{classe}}"
+                                        th:text="${classe.name}"></option>
+                                </select>
+
+                            <input th:if="${param.classe}" type="text" name="classe" th:field="*{classe}"
+                                    class="form-control col-md-7 col-xs-12" readonly>
+                            </div>
+                        </div>
+
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <a th:href="@{/eleves}" class="btn btn-default">Annuler</a>
+                                <button class="btn btn-info" type="reset">Reinitialiser</button>
+                                <input type="submit" class="btn btn-primary" value="Enregistrer" />
+                            </div>
+                        </div>
+
+                    </form>
+
+                    </div>
+                    <div class="box-footer clearfix"></div>
+
+                </div>
+		</div>
+
+	</section>
+</body>
+</html>

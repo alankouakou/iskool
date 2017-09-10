@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragments/layout}"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Nouvel enseignant</title>
+
+</head>
+
+<body data-ng-app="MyApp">
+
+	<!-- page content -->
+	<section data-layout-fragment="content">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">
+							Enseignant <small> Informations </small>
+						</h3>
+						<div class="clearfix"></div>
+					</div>
+					<div class="box-body">
+						<form id="frmeenseignant" name="frmenseignant"
+							th:object="${enseignant}" th:action="@{/enseignants/save}"
+							class="form-horizontal form-label-left" method="POST">
+							<input type="hidden" th:field="*{id}" />
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12"
+									for="nom">Nom <span class="required">*</span>
+								</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<input type="text" name="nom" th:field="*{nom}"
+										class="form-control col-md-7 col-xs-12">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12"
+									for="prenom">Prenom <span class="required">*</span>
+								</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<input type="text" name="prenom" th:field="*{prenom}"
+										class="form-control col-md-7 col-xs-12">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12"
+									for="civilite">Civilit&eacute; <span class="required">*</span>
+								</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<select type="text" name="civilite" th:field="*{civilite}"
+										class="form-control col-md-7 col-xs-12">
+										<option th:each="civilite: ${civilites}"
+											th:text="${civilite.name}" th:value="${civilite}"></option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12"
+									for="sexe">Sexe <span class="required">*</span>
+								</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<select type="text" name="sexe" th:field="*{sexe}"
+										class="form-control col-md-7 col-xs-12">
+										<option th:each="genre: ${genres}"
+											th:text="${genre.name}" th:value="${genre}"></option>
+									</select>
+								</div>
+							</div>							
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12"
+									for="datenaiss">Date de naissance <span
+									class="required">*</span>
+								</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<input type="text" name="datenaiss" th:field="*{dateNaissance}"
+										class="form-control datepicker col-md-7 col-xs-12" data-date-format="dd/mm/yyyy"
+										placeholder="ex: 01/01/1970">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12"
+									for="email">E-mail <span class="required">*</span>
+								</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<input type="text" name="email" th:field="*{email}"
+										class="form-control col-md-7 col-xs-12" placeholder="...">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12"
+									for="mobile">Telephone Mobile <span class="required">*</span>
+								</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<input type="text" name="mobile" th:field="*{telephoneMobile}"
+										class="form-control col-md-7 col-xs-12" placeholder="...">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12"
+									for="fixe">Telephone fixe <span class="required">*</span>
+								</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<input type="text" name="fixe" th:field="*{telephoneFixe}"
+										class="form-control col-md-7 col-xs-12" placeholder="...">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12"
+									for="adresse">Adresse <span class="required">*</span>
+								</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<input type="text" name="adresse" th:field="*{adresse}"
+										class="form-control col-md-7 col-xs-12"
+										placeholder="Rue, Quartier, Ville, Pays ...">
+								</div>
+							</div>
+							<div class="ln_solid"></div>
+							<div class="form-group">
+								<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+									<a th:href="@{/enseignants}" class="btn btn-default">Annuler</a>
+									<button class="btn btn-info" type="reset">Reinitialiser</button>
+									<input type="submit" class="btn btn-primary"
+										value="Enregistrer" />
+								</div>
+							</div>
+
+						</form>
+
+					</div>
+					<div class="box-footer clearfix"></div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

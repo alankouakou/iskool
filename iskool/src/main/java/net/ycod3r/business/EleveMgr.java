@@ -13,7 +13,6 @@ import net.ycod3r.domain.Classe;
 import net.ycod3r.domain.Eleve;
 import net.ycod3r.repository.EleveRepo;
 import net.ycod3r.repository.EvaluationRepo;
-import net.ycod3r.repository.NoteRepo;
 
 @Service
 @Transactional
@@ -25,9 +24,7 @@ public class EleveMgr {
 	@Autowired
 	private EvaluationRepo evaluationRep;
 	
-	@Autowired
-	private NoteRepo noteRep;
-	
+
 	public Eleve findOne(Long id){
 		return eleveRep.findOne(id);
 	}

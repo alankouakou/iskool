@@ -24,7 +24,6 @@ import net.ycod3r.domain.Matiere;
 import net.ycod3r.domain.Note;
 import net.ycod3r.domain.TypeNote;
 import net.ycod3r.repository.ClasseRepo;
-import net.ycod3r.repository.EleveRepo;
 import net.ycod3r.repository.EvaluationRepo;
 import net.ycod3r.repository.NoteRepo;
 import net.ycod3r.repository.TypeNoteRepo;

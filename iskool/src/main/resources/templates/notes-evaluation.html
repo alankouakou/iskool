@@ -12,28 +12,28 @@
 	<!-- page content -->
 	<div class="right_col" role="main" data-layout-fragment="content">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<div class="x_panel">
-				<div class="x_title">
-					<h2 th:text="${evaluation.classe} + ' - '+ ${evaluation.typeEvaluation} + ' de ' + ${{evaluation.matiere}} +' du '+${{evaluation.dateEvaluation}}">
-					</h2>
+			<div class="box">
+				<div class="box-header with-border">
+					<h3 class="box-title" th:text="${evaluation.classe} + ' - '+ ${evaluation.typeEvaluation} + ' de ' + ${{evaluation.matiere}} +' du '+${{evaluation.dateEvaluation}}">
+					</h3>
 					<h5 class="pull-right">
 						Total : <span th:text="${nbNotes}"></span> Notes
 					</h5>
 					
 					<div class="clearfix"></div>
 				</div>
-				<div class="x_content" style="display: block;" >
+				<div class="box-body" style="display: block;" >
 					<a th:if="${nbEleves} > ${nbNotes}" th:href="@{/evaluations/{id}/add-note(id=${evaluation.id})}" class="btn btn-md btn-success pull-right"><i
 						class="fa fa-plus-circle"></i> Ajouter note</a>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<div class="x_panel">
-				<div class="x_title">
+			<div class="box">
+				<div class="box-header with-border">
 					<div class="clearfix"></div>
 				</div>
-				<div class="x_content">
+				<div class="box-body">
 					<table class="table table-hover">
 						<thead>
 							<tr>

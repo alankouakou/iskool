@@ -87,6 +87,14 @@
 		</dependency>
 
 		<!-- webjars -->
+
+		<!-- AdminLTE -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>AdminLTE</artifactId>
+			<version>2.3.8</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap-datepicker</artifactId>

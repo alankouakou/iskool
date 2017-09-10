@@ -16,6 +16,10 @@ public class Classe {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	private String name;
+	@ManyToOne
+	private Niveau niveau;
+	@ManyToOne
+	private AnneeAcademique anneeAcademique;
 	
 	@OneToMany(mappedBy="classe")
 	private List<Eleve> eleves;
@@ -44,6 +48,14 @@ public class Classe {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Niveau getNiveau() {
+		return niveau;
+	}
+
+	public void setNiveau(Niveau niveau) {
+		this.niveau = niveau;
 	}
 
 	public List<Evaluation> getEvaluations() {
