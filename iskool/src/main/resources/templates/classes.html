@@ -17,7 +17,7 @@
 					<h3 class="box-title">
 						Gestion des classes <small>Listing </small>
 					</h3>
-					<a th:href="@{/add}" class="btn btn-md btn-success pull-right"><i class="fa fa-plus-circle"></i> Ajouter
+					<a th:href="@{/classes/add}" class="btn btn-md btn-success pull-right"><i class="fa fa-plus-circle"></i> Ajouter
 						classe</a>
 					<div class="clearfix"></div>
 				</div>
@@ -35,9 +35,9 @@
 							<tr th:each="classe:${classes}">
 								<td th:text="${classe.id}"></td>
 								<td th:text="${classe.name}"></td>
-								<td><a th:href="@{/edit/{id}(id=${classe.id}) }" class="btn btn-default btn-xs">Modifier</a>
-									<a th:href="@{/delete/{id}(id=${classe.id}) }" class="btn btn-info btn-xs">Suppr.</a>
-									<a th:href="@{/show/{id}(id=${classe.id}) }" class="btn btn-primary btn-xs">
+								<td><a th:href="@{/classes/edit/{id}(id=${classe.id}) }" class="btn btn-default btn-xs">Modifier</a>
+									<a th:href="@{/classes/delete/{id}(id=${classe.id}) }" class="btn btn-info btn-xs">Suppr.</a>
+									<a th:href="@{/classes/show/{id}(id=${classe.id}) }" class="btn btn-primary btn-xs">
 										Voir <span class="fa fa-search"></span>
 									</a>
 									<a th:href="@{/notes/moyennes/{id}(id=${classe.id})}" class="btn btn-success btn-xs">Moyennes</a>

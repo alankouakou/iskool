@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,6 +33,8 @@ public class Evaluation {
 	
 	@ManyToOne
 	private TypeNote typeEvaluation;
+	@Enumerated(EnumType.STRING)
+	private StatutEvaluation statut; 
 	
 	private Date dateMaj;
 	
@@ -57,6 +61,7 @@ public class Evaluation {
 	
 	public Evaluation() {
 		this.dateMaj= new Date();
+		this.statut = StatutEvaluation.NOUVEAU;
 	}
 	
 	public Evaluation(Date dateEvaluation, Classe classe, Matiere matiere, TypeNote typeEvaluation) {
@@ -66,6 +71,7 @@ public class Evaluation {
 		this.matiere  = matiere;
 		this.typeEvaluation = typeEvaluation;
 		this.dateMaj = new Date();
+		this.statut = StatutEvaluation.PLANIFIE;
 	}
 	
 	public long getId() {
@@ -82,6 +88,7 @@ public class Evaluation {
 	
 	public void setDateEvaluation(Date dateEvaluation) {
 		this.dateEvaluation = dateEvaluation;
+		this.statut = StatutEvaluation.PLANIFIE;
 	}
 	
 	public Classe getClasse() {
@@ -100,6 +107,14 @@ public class Evaluation {
 		this.typeEvaluation = typeEvaluation;
 	}
 	
+	public StatutEvaluation getStatut() {
+		return statut;
+	}
+
+	public void setStatut(StatutEvaluation statut) {
+		this.statut = statut;
+	}
+
 	public Date getDateMaj() {
 		return dateMaj;
 	}

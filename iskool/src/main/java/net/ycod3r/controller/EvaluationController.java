@@ -1,5 +1,6 @@
 package net.ycod3r.controller;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +23,7 @@ import net.ycod3r.domain.Eleve;
 import net.ycod3r.domain.Evaluation;
 import net.ycod3r.domain.Matiere;
 import net.ycod3r.domain.Note;
+import net.ycod3r.domain.StatutEvaluation;
 import net.ycod3r.domain.TypeNote;
 import net.ycod3r.repository.ClasseRepo;
 import net.ycod3r.repository.EvaluationRepo;
@@ -55,6 +57,11 @@ public class EvaluationController {
 	private List<Classe> getClasses()
 	{
 		return classeRep.findAll();
+	}
+	
+	@ModelAttribute("statuts")
+	private List<StatutEvaluation> getStatuts(){
+		return Arrays.asList(StatutEvaluation.values());
 	}
 	
 	@ModelAttribute("typeNotes")

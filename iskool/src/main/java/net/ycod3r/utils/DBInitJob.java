@@ -2,9 +2,11 @@ package net.ycod3r.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import net.ycod3r.domain.Civilite;
@@ -15,7 +17,11 @@ import net.ycod3r.domain.Evaluation;
 import net.ycod3r.domain.Matiere;
 import net.ycod3r.domain.Note;
 import net.ycod3r.domain.Periode;
+import net.ycod3r.domain.Role;
+import net.ycod3r.domain.Sexe;
+import net.ycod3r.domain.StatutEvaluation;
 import net.ycod3r.domain.TypeNote;
+import net.ycod3r.domain.User;
 import net.ycod3r.repository.ClasseRepo;
 import net.ycod3r.repository.EleveRepo;
 import net.ycod3r.repository.EnseignantRepo;
@@ -23,11 +29,17 @@ import net.ycod3r.repository.EvaluationRepo;
 import net.ycod3r.repository.MatiereRepo;
 import net.ycod3r.repository.NoteRepo;
 import net.ycod3r.repository.PeriodeRepo;
+import net.ycod3r.repository.RoleRepo;
 import net.ycod3r.repository.TypeNoteRepo;
+import net.ycod3r.repository.UserRepo;
 
 @Component
 public class DBInitJob implements CommandLineRunner {
  //public class DBInitJob {
+	@Autowired
+	private RoleRepo roleRepo;
+	@Autowired
+	private UserRepo userRepo;
 	@Autowired
 	private ClasseRepo classeRep;
 	@Autowired
@@ -46,9 +58,25 @@ public class DBInitJob implements CommandLineRunner {
 	
 	@Autowired
 	private MatiereRepo matiereRep;
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
 
 	//@Override
 	public void run(String... arg0) throws Exception {
+
+		Role role_user = new Role("ROLE_USER");
+		Role role_admin = new Role("ROLE_ADMIN");
+		roleRepo.save(Arrays.asList(role_user,role_admin));
+		User user = new User("user",passwordEncoder.encode("user"),true);
+		user.setPrenom("Alan");
+		user.setNom("KOUAKOU");
+		user.addRole(roleRepo.findByRole("ROLE_USER"));
+		User admin = new User("admin",passwordEncoder.encode("admin"),true);
+		admin.setNom("Administrateur");
+		admin.setPrenom("Super");
+		admin.addRole(roleRepo.findByRole("ROLE_ADMIN"));
+		userRepo.save(Arrays.asList(user,admin));
 		
 		//Initialisation matiere
 		Matiere geometrie = new Matiere("Geometrie",4);
@@ -83,26 +111,27 @@ public class DBInitJob implements CommandLineRunner {
 
 		// Initialisation Eleves
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Eleve eleve1 = new Eleve("KOFFI", "Stéphane", Civilite.MONSIEUR, sdf.parse("01/02/1997"), licence1);
-		Eleve eleve2 = new Eleve("KOUASSI", "Rosine", Civilite.MADEMOISELLE,sdf.parse("23/05/1995"), licence1);
-		Eleve eleve3 = new Eleve("COULIBALY", "Mariama", Civilite.MADEMOISELLE, sdf.parse("12/07/1996"), licence1);
-		Eleve eleve4 = new Eleve("YAO", "Olivier", Civilite.MONSIEUR, sdf.parse("07/03/1998"), licence1);
-		Eleve eleve5 = new Eleve("TAPE", "Cedric", Civilite.MONSIEUR, sdf.parse("03/10/1998"), licence2);
-		Eleve eleve6 = new Eleve("ZIKE", "Rodrigue", Civilite.MONSIEUR, sdf.parse("03/06/1997"), licence2);
-		Eleve eleve7 = new Eleve("KOUAKOU", "Aurélien", Civilite.MONSIEUR, sdf.parse("09/11/1996"), licence2);
-		Eleve eleve8 = new Eleve("KONE", "Abou",Civilite.MONSIEUR,  sdf.parse("12/12/1994"), licence2);
-		Eleve eleve9 = new Eleve("NIAYE", "Aymeric", Civilite.MONSIEUR, sdf.parse("12/12/1999"), licence1);
-		Eleve eleve10 = new Eleve("TOURE", "Karamoko", Civilite.MONSIEUR, sdf.parse("05/11/2000"), licence2);
-		Eleve eleve11 = new Eleve("DEGNY", "Ambroise", Civilite.MONSIEUR, sdf.parse("06/10/1997"), licence2);
+		Eleve eleve1 = new Eleve("KOFFI", "Stéphane", Sexe.MASCULIN, Civilite.MONSIEUR, sdf.parse("01/02/1997"), licence1);
+		Eleve eleve2 = new Eleve("KOUASSI", "Rosine", Sexe.FEMININ, Civilite.MADEMOISELLE,sdf.parse("23/05/1995"), licence1);
+		Eleve eleve3 = new Eleve("COULIBALY", "Mariama", Sexe.FEMININ, Civilite.MADEMOISELLE, sdf.parse("12/07/1996"), licence1);
+		Eleve eleve4 = new Eleve("YAO", "Olivier", Sexe.MASCULIN, Civilite.MONSIEUR, sdf.parse("07/03/1998"), licence1);
+		Eleve eleve5 = new Eleve("TAPE", "Cedric", Sexe.MASCULIN, Civilite.MONSIEUR, sdf.parse("03/10/1998"), licence2);
+		Eleve eleve6 = new Eleve("ZIKE", "Rodrigue", Sexe.MASCULIN, Civilite.MONSIEUR, sdf.parse("03/06/1997"), licence2);
+		Eleve eleve7 = new Eleve("KOUAKOU", "Aurélien", Sexe.MASCULIN, Civilite.MONSIEUR, sdf.parse("09/11/1996"), licence2);
+		Eleve eleve8 = new Eleve("KONE", "Abou", Sexe.MASCULIN, Civilite.MONSIEUR,  sdf.parse("12/12/1994"), licence2);
+		Eleve eleve9 = new Eleve("NIAYE", "Aymeric", Sexe.MASCULIN, Civilite.MONSIEUR, sdf.parse("12/12/1999"), licence1);
+		Eleve eleve10 = new Eleve("TOURE", "Karamoko", Sexe.MASCULIN, Civilite.MONSIEUR, sdf.parse("05/11/2000"), licence2);
+		Eleve eleve11 = new Eleve("DEGNY", "Ambroise", Sexe.MASCULIN, Civilite.MONSIEUR, sdf.parse("06/10/1997"), licence2);
 
 		eleveRep.save(Arrays.asList(eleve1, eleve2, eleve3, eleve4,eleve5,eleve6,eleve7,eleve8,eleve9,eleve10,eleve11));
 		//eleveRep.save(Arrays.asList(eleve1, eleve2, eleve3, eleve4,eleve5,eleve6));
 		// Initialisation Enseignants
-		Enseignant enseignant = new Enseignant("SERY","Jocelyn",Civilite.MONSIEUR, sdf.parse("01/01/1975"),"09888888","22420000","jocelyn.sery@mail.com");
-		Enseignant enseignant2 = new Enseignant("TOURE","Moussa",Civilite.MONSIEUR, sdf.parse("01/01/1978"),"02123456","22420000","moussa.toure@wanadoo.fr");
-		Enseignant enseignant3 = new Enseignant("AKA","Armand",Civilite.MONSIEUR, sdf.parse("12/12/1973"),"05654321","22420000","armand.aka@hotmail.fr");
+		Enseignant enseignant = new Enseignant("SERY","Jocelyn", Sexe.MASCULIN, Civilite.MONSIEUR, sdf.parse("01/01/1975"),"09888888","22420000","jocelyn.sery@mail.com");
+		Enseignant enseignant2 = new Enseignant("TOURE","Moussa", Sexe.MASCULIN, Civilite.MONSIEUR, sdf.parse("01/01/1978"),"02123456","22420000","moussa.toure@wanadoo.fr");
+		Enseignant enseignant3 = new Enseignant("AKA","Armand", Sexe.MASCULIN, Civilite.MONSIEUR, sdf.parse("12/12/1973"),"05654321","22420000","armand.aka@hotmail.fr");
+		Enseignant enseignant4 = new Enseignant("CAMARA","Naomie", Sexe.FEMININ, Civilite.MADEMOISELLE, sdf.parse("21/07/1988"),"47750201","","naomie.camara@gmail.com");
 		
-		enseignantRep.save(Arrays.asList(enseignant,enseignant2,enseignant3));
+		enseignantRep.save(Arrays.asList(enseignant,enseignant2,enseignant3, enseignant4));
 		//Initialisation evaluation
 		Evaluation eval1 = new Evaluation(sdf.parse("03/12/2016"),licence1,geometrie,interro);
 		Evaluation eval2 = new Evaluation(sdf.parse("01/03/2017"),licence2,francais,interro);
@@ -110,6 +139,8 @@ public class DBInitJob implements CommandLineRunner {
 		Evaluation eval4 = new Evaluation(sdf.parse("08/03/2017"),licence2,francais,devoir);
 		Evaluation eval5 = new Evaluation(sdf.parse("08/03/2017"),licence2,francais,devoir);
 		Evaluation eval6 = new Evaluation(sdf.parse("08/03/2017"),licence2,francais,devoir);
+		for(Evaluation e:Arrays.asList(eval1,eval2,eval3,eval4,eval5,eval6))
+			e.setStatut(StatutEvaluation.TERMINE);
 		evalRep.save(Arrays.asList(eval1,eval2,eval3,eval4,eval5,eval6));
 		
 		//Initialisation notes

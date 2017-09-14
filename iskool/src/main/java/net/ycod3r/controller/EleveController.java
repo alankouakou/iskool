@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import net.ycod3r.domain.Civilite;
 import net.ycod3r.domain.Classe;
 import net.ycod3r.domain.Eleve;
 import net.ycod3r.domain.Sexe;
@@ -43,6 +44,11 @@ public class EleveController {
 	@ModelAttribute("genres")
 	private List<Sexe> getGenres(){
 		return Arrays.asList(Sexe.values());
+	}
+	
+	@ModelAttribute("civilites")
+	private List<Civilite> getCivilites(){
+		return Arrays.asList(Civilite.values());
 	}
 	
 	@ModelAttribute("etatCivils")

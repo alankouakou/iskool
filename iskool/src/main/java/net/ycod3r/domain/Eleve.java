@@ -18,6 +18,8 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import net.ycod3r.custom.annotations.Telephone;
+
 @Entity
 public class Eleve {
 	
@@ -68,10 +70,11 @@ public class Eleve {
 	
 	public Eleve(){}
 	
-	public Eleve(String nom, String prenom, Civilite civilite, Date dateNaissance, Classe classe) {
+	public Eleve(String nom, String prenom, Sexe sexe, Civilite civilite, Date dateNaissance, Classe classe) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
+		this.sexe = sexe;
 		this.civilite = civilite;
 		this.dateNaissance = dateNaissance;
 		this.classe = classe;

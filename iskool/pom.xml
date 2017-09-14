@@ -60,8 +60,18 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+		</dependency>		
+		<dependency>
+		<!-- spring security -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+		<!-- thymeleaf extras spring security 4 -->
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
+			<version>3.0.0.RELEASE</version>
+		</dependency>		
 		<!-- Thymeleaf -->
 		<dependency>
 			<groupId>org.thymeleaf</groupId>

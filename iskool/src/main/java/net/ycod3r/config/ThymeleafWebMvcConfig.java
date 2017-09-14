@@ -7,6 +7,7 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.thymeleaf.ITemplateEngine;
+import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
@@ -45,6 +46,7 @@ public class ThymeleafWebMvcConfig extends WebMvcConfigurerAdapter {
 		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
 		templateEngine.setTemplateResolver(templateResolver());
 		templateEngine.setDialect(new LayoutDialect());
+		templateEngine.addDialect(new SpringSecurityDialect());
 		return templateEngine;
 	}
 

@@ -56,13 +56,20 @@ public class EnseignantController {
 		return Arrays.asList(SituationFamiliale.values());
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping("/list")
 	public String index(Model model) {
 		Collection<Enseignant> enseignants = enseignantMgr.findAllByOrderByNomAscPrenomAsc();
 		model.addAttribute("enseignants", enseignants);
 		return "enseignants";
 	}
 
+	@RequestMapping(method = RequestMethod.GET)
+	public String index2(Model model) {
+		Collection<Enseignant> enseignants = enseignantMgr.findAllByOrderByNomAscPrenomAsc();
+		model.addAttribute("enseignants", enseignants);
+		return "enseignants-widget";
+	}
+	
 	@GetMapping("/add")
 	public String add(Model model) {
 

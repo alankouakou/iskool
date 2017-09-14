@@ -37,6 +37,14 @@
 							</div>
 
 							<div class="form-group">
+								<label for="civilite">Civilit&eacute;</label> <select class="form-control"
+									id="civilite" th:field="*{civilite}">
+									<option th:each="civilite: ${civilites}" th:text="${civilite.name}" th:value="${civilite}"></option>
+								</select>
+							</div>
+
+
+							<div class="form-group">
 								<label for="sexe">Sexe</label> <select class="form-control"
 									id="sexe" th:field="*{sexe}">
 									<option th:each="genre: ${genres}" th:text="${genre.name}" th:value="${genre}"></option>
@@ -106,7 +114,7 @@
 							<div class="form-group">
 								<label for="contact-urgence">Personne &agrave; contacter
 									en cas d'urgence</label> <input type="text" class="form-control"
-									id="contact-urgence" placeholder="Nom..." th:field="*{nomContactUrgence1}">
+									id="contact-urgence" placeholder="Nom & Prenom..." th:field="*{nomContactUrgence1}">
 							</div>
 							<div class="form-group">
 								<label for="telephone-urgence">N&deg; d'urgence</label> <input

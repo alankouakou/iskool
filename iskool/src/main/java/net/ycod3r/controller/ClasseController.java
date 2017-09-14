@@ -20,7 +20,7 @@ import net.ycod3r.repository.ClasseRepo;
 import net.ycod3r.repository.EleveRepo;
 
 @Controller
-@RequestMapping({"/","/classes"})
+@RequestMapping({"/classes"})
 public class ClasseController {
 	
 	@Autowired

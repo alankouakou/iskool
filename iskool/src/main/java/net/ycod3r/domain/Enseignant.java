@@ -34,10 +34,11 @@ public class Enseignant {
 		
 	}
 	
-	public Enseignant(String nom, String prenom, Civilite civilite, Date dateNaissance, String mobile, String fixe, String email){
+	public Enseignant(String nom, String prenom, Sexe sexe, Civilite civilite, Date dateNaissance, String mobile, String fixe, String email){
 		this.nom = nom;
 		this.prenom = prenom;
 		this.civilite = civilite;
+		this.sexe =sexe;
 		this.dateNaissance = dateNaissance;
 		this.telephoneMobile = mobile;
 		this.telephoneFixe = fixe;

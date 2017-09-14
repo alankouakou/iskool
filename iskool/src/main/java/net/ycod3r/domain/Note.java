@@ -18,6 +18,7 @@ public class Note {
 	private long id;
 	private Date date;
 	private Double valeur;
+	private String observations;
 	@ManyToOne(cascade={CascadeType.REMOVE, CascadeType.MERGE})
 	private Evaluation evaluation;
 	@ManyToOne
@@ -31,6 +32,7 @@ public class Note {
 		this.valeur = valeur;
 		this.eleve = eleve;
 		this.evaluation = evaluation;
+
 	}
 
 	public long getId() {
@@ -55,6 +57,14 @@ public class Note {
 
 	public void setValeur(Double valeur) {
 		this.valeur = valeur;
+	}
+
+	public String getObservations() {
+		return observations;
+	}
+
+	public void setObservations(String observations) {
+		this.observations = observations;
 	}
 
 	public Evaluation getEvaluation() {
