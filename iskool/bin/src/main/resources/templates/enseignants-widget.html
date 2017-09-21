@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragments/layout}"
+	xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+<title>Eleves</title>
+
+</head>
+
+<body data-ng-app="MyApp">
+
+	<!-- page content -->
+	<section class="content" data-layout-fragment="content">
+
+		<div class="right_col" role="main">
+			<div class="row">
+<!-- Debut insertion -->
+<div th:each="e:${enseignants}" class="col-md-4">
+          <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user-2">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-green">
+              <div th:if="${e.sexe == T(net.ycod3r.domain.Sexe).MASCULIN}" class="widget-user-image">
+                <img  class="img-circle" th:src="@{/img/avatar5.png}" alt="User Avatar">
+               </div>
+               <div th:if="${e.sexe != T(net.ycod3r.domain.Sexe).MASCULIN}" class="widget-user-image"> 
+                <img class="img-circle" th:src="@{/img/avatar3.png}" alt="User Avatar">
+              </div>
+              <!-- /.widget-user-image -->
+              <h3 class="widget-user-username" th:text="${e.nom}+ ' ' + ${e.prenom}"></h3>
+              <h5 class="widget-user-desc" th:text="'Mobile : (+225) '+${e.telephoneMobile}"></h5>
+              <h5 class="widget-user-desc" th:text="${e.telephoneFixe} == ''?'Fixe: ':'Fixe : (+225) '+${e.telephoneFixe}"></h5>
+            </div>
+            <div class="box-footer no-padding">
+              <ul class="nav nav-stacked">
+                <li><a href="#">Modules <span class="pull-right badge bg-blue">31</span></a></li>
+                <li><a href="#">Modules achev&eacute;s <span class="pull-right badge bg-green">12</span></a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /.widget-user -->
+        </div>
+<!-- Fin insertion -->
+			</div>
+
+		</div>
+	</section>
+	<!-- /page content -->
+</body>
+</html>

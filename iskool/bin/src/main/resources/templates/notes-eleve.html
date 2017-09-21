@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragments/layout}"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title th:text="'Notes de '+ ${eleve.nom} + ' '+ ${eleve.prenom}"> Notes d'une evaluation </title>
+
+</head>
+
+<body data-ng-app="MyApp">
+
+	<!-- page content -->
+	<div class="right_col" role="main" data-layout-fragment="content">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="box">
+				<div class="box-header with-border">
+					<h2 th:text="${eleve.nom} + ' '+ ${eleve.prenom}+' ( '+${{eleve.classe.name}} + ')'">
+					</h2>
+					<h5 class="pull-right">
+						Moyenne : <span th:if="${moyenne != null}" th:text="${#numbers.formatDecimal(moyenne.moyenne,2,2,'COMMA')}"></span> 
+					</h5>
+					
+					<div class="clearfix"></div>
+				</div>
+				<div class="box-body" style="display: block;" >
+					
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="box">
+				<div class="box-header with-border">
+					<div class="clearfix"></div>
+				</div>
+				<div class="box-body">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Evaluation</th>
+								<th>Date</th>
+								<th>Matiere</th>
+								<th>Note obtenue</th>
+								<th>Observations</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr th:each="note:${notes}">
+								<td th:text="${note.evaluation.typeEvaluation.name}"></td>
+								<td th:text="${{note.evaluation.dateEvaluation}}"></td>
+								<td th:text="${note.evaluation.matiere.name}"></td>
+								<td th:text="${note.valeur}"></td>
+								<td><a th:href="@{/notes/edit/{id}(id=${note.id})  }"
+									class="btn btn-primary btn-xs"> Editer <span
+										class="fa fa-edit"></span>
+								</a></td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- /page content -->
+</body>
+</html>

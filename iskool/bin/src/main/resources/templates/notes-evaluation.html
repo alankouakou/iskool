@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragments/layout}"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title> Notes d'une evaluation </title>
+
+</head>
+
+<body data-ng-app="MyApp">
+
+	<!-- page content -->
+	<div class="right_col" role="main" data-layout-fragment="content">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="box">
+				<div class="box-header with-border">
+					<h3 class="box-title" th:text="${evaluation.classe} + ' - '+ ${evaluation.typeEvaluation} + ' de ' + ${{evaluation.matiere}} +' du '+${{evaluation.dateEvaluation}}">
+					</h3>
+					<h5 class="pull-right">
+						Total : <span th:text="${nbNotes}"></span> Notes
+					</h5>
+					
+					<div class="clearfix"></div>
+				</div>
+				<div class="box-body" style="display: block;" >
+					<a th:if="${nbEleves} > ${nbNotes}" th:href="@{/evaluations/{id}/add-note(id=${evaluation.id})}" class="btn btn-md btn-success pull-right"><i
+						class="fa fa-plus-circle"></i> Ajouter note</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="box">
+				<div class="box-header with-border">
+					<div class="clearfix"></div>
+				</div>
+				<div class="box-body">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Nom</th>
+								<th>Prenom</th>
+								<th>Note obtenue</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr th:each="note:${notes}">
+								<td th:text="${note.id}"></td>
+								<td th:text="${note.eleve.nom}"></td>
+								<td th:text="${note.eleve.prenom}"></td>
+								<td th:text="${note.valeur}"></td>
+								<td><a th:href="@{'/notes/edit/' + ${note.id} }"
+									class="btn btn-default btn-xs">Modifier</a> <a
+									th:href="@{'/notes/delete/' + ${note.id} }"
+									class="btn btn-info btn-xs">Suppr.</a> <a th:href="@{'/notes/edit/' + ${note.id} }"
+									class="btn btn-primary btn-xs"> Voir <span
+										class="fa fa-pencil"></span>
+								</a></td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- /page content -->
+</body>
+</html>

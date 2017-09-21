@@ -1,0 +1,91 @@
+<div class="col-md-12 col-sm-12 col-xs-12">
+	<div class="x_panel">
+		<div class="x_title">
+			<h2>
+				Enregistrement client <small> saisie details</small>
+			</h2>
+
+			<div class="clearfix"></div>
+		</div>
+		<div class="x_content" style="display: block;">
+			<div class="alert alert-success " ng-show="msg_feedback">
+				{{ msg_feedback }}
+			</div>
+			<br>
+			<form id="frmclient" name="frmclient" data-parsley-validate=""
+				class="form-horizontal form-label-left" novalidate=""
+				data-ng-submit="creerClient()">
+
+				<div class="form-group"
+					data-ng-class="{'has-error':frmclient.prenom.$invalid && frmclient.prenom.$dirty}">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12"
+						for="prenom">prenom <span class="required">*</span>
+					</label>
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<input type="text" name="prenom" data-ng-minlength="3"
+							class="form-control col-md-7 col-xs-12"
+							data-ng-model="client.prenom">
+					</div>
+				</div>
+				<div class="form-group"
+					data-ng-class="{'has-error':frmclient.nom.$invalid && frmclient.nom.$dirty}">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12" for="nom">Last
+						Name <span class="required">*</span>
+					</label>
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<input type="text" id="nom" name="nom" data-ng-minlength="3"
+							class="form-control col-md-7 col-xs-12"
+							data-ng-model="client.nom">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="Adresse"
+						class="control-label col-md-3 col-sm-3 col-xs-12">Profession</label>
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<input id="adresse" class="form-control col-md-7 col-xs-12"
+							type="text" name="profession" data-ng-model="client.profession">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12">Genre</label>
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div id="gender" class="btn-group" data-toggle="buttons">
+							<label class="btn btn-default" data-toggle-class="btn-primary"
+								data-toggle-passive-class="btn-default"> <input
+								type="radio" name="genre" value="masculin"
+								data-parsley-multiple="genre" data-ng-model="client.genre">
+								&nbsp; Masculin &nbsp;
+							</label> <label class="btn btn-primary" data-toggle-class="btn-primary"
+								data-toggle-passive-class="btn-default"> <input
+								type="radio" name="genre" value="feminin"
+								data-parsley-multiple="genre" data-ng-model="client.genre">
+								Feminin
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12">Date
+						de naissance <span class="required">*</span>
+					</label>
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<input id="dateNaissance" name="dateNaissance"
+							class="date-picker form-control col-md-7 col-xs-12"
+							required="required" type="text" placeholder="Ex: 01/01/1990"
+							data-ng-model="client.dateNaissance">
+					</div>
+				</div>
+				<div class="ln_solid"></div>
+				<div class="form-group">
+					<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+						<button class="btn btn-primary" type="button">Annuler</button>
+						<button class="btn btn-primary" type="reset">Reinitialiser</button>
+						<button type="submit" class="btn btn-success"
+							data-ng-disabled="frmclient.$pristine || frmclient.$dirty && frmclient.$invalid">Envoyer</button>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>

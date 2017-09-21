@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragments/layout}"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Nouvel eleve</title>
+
+</head>
+
+<body data-ng-app="MyApp">
+
+	<!-- page content -->
+	<section data-layout-fragment="content">
+		<form id="frmeleve" name="frmeleve" th:object="${eleve}" th:action="@{/eleves/save}" method="POST">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="box">
+						<div class="box-header with-border">
+							<h3 class="box-title">Informations Etudiant</h3>
+						</div>
+						<div class="box-body">
+							<div class="form-group">
+							<input type="hidden" th:field="*{id}">
+								<label for="matricule">Matricule</label> <input type="text"
+									class="form-control" id="matricule" placeholder="Matricule..." th:field="*{matricule}">
+							</div>
+
+							<div class="form-group">
+								<label for="nom">Nom</label> <input type="text"
+									class="form-control" id="nom" placeholder="Nom..." th:field="*{nom}">
+							</div>
+
+							<div class="form-group">
+								<label for="prenom">Prenom</label> <input type="text"
+									class="form-control" id="prenom" placeholder="Prenom..." th:field="*{prenom}">
+							</div>
+
+							<div class="form-group">
+								<label for="civilite">Civilit&eacute;</label> <select class="form-control"
+									id="civilite" th:field="*{civilite}">
+									<option th:each="civilite: ${civilites}" th:text="${civilite.name}" th:value="${civilite}"></option>
+								</select>
+							</div>
+
+
+							<div class="form-group">
+								<label for="sexe">Sexe</label> <select class="form-control"
+									id="sexe" th:field="*{sexe}">
+									<option th:each="genre: ${genres}" th:text="${genre.name}" th:value="${genre}"></option>
+								</select>
+							</div>
+
+							<div class="form-group"  >
+								<label for="date-naissance">Date de naissance</label> <input
+									type="text" class="form-control datepicker" data-date-format="dd/mm/yyyy" id="date-naissance"
+									placeholder="jj/mm/aaaa..." th:field="*{dateNaissance}">
+							</div>
+
+							<div class="form-group">
+								<label for="lieu-naissance">Lieu de naissance</label> <input
+									type="text" class="form-control" id="lieu-naissance"
+									placeholder="Lieu de naissance..." th:field="*{lieuNaissance}">
+							</div>
+
+							<div class="form-group">
+							<strong> Situation matrimoniale</strong>
+								<ul class="radio">
+									<li th:each="etatCivil: ${etatCivils}"><input type="radio"
+										th:field="*{situationFamiliale}" th:value="${etatCivil}">
+										<label for="situation" th:text="${etatCivil.name}"></label></li>
+								</ul>
+							</div>
+							<!-- </div>-->
+
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="box">
+						<div class="box-header with-border">
+							<h3 class="box-title">Adresse & Telephones</h3>
+						</div>
+						<div class="box-body">
+
+							<div class="form-group">
+								<label for="tel-fixe">Telephone fixe</label> <input type="text"
+									class="form-control" id="tel-fixe"
+									placeholder="Telephone fixe..." th:field="*{telephoneFixe}">
+							</div>
+
+							<div class="form-group">
+								<label for="tel-mobile">Telephone mobile</label> <input
+									type="text" class="form-control" id="tel-mobile"
+									placeholder="Telephone mobile..." th:field="*{telephoneMobile}">
+							</div>
+
+							<div class="form-group">
+								<label for="adresse">Adresse</label> <input type="text"
+									class="form-control" id="adresse" placeholder="Adresse..." th:field="*{adresse}">
+							</div>
+
+							<div class="form-group">
+								<label for="boite-postale">Boite postale</label> <input
+									type="text" class="form-control" id="boite-postale"
+									placeholder="Boite postale..." th:field="*{boitePostale}">
+							</div>
+
+							<div class="form-group">
+								<label for="e-mail">E-mail</label> <input type="text"
+									class="form-control" id="e-mail" placeholder="E-mail..." th:field="*{email}">
+							</div>
+
+							<div class="form-group">
+								<label for="contact-urgence">Personne &agrave; contacter
+									en cas d'urgence</label> <input type="text" class="form-control"
+									id="contact-urgence" placeholder="Nom & Prenom..." th:field="*{nomContactUrgence1}">
+							</div>
+							<div class="form-group">
+								<label for="telephone-urgence">N&deg; d'urgence</label> <input
+									type="text" class="form-control" id="telephone-urgence"
+									placeholder="Telephone..." th:field="*{telephoneContactUrgence1}">
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+
+					<div class="box">
+						<div class="box-header with-border">
+							<h3 class="box-title">Autres informations</h3>
+						</div>
+						<div class="box-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="titre-admission">Titre d'admission</label> <input
+											type="text" class="form-control" id="titre-admission"
+											placeholder="BAC + serie (ou Autres)..."
+											th:field="*{titreAdmission}">
+									</div>
+									<div class="form-group">
+										<label for="annee-obtention">Annee d'obtention</label> <input
+											type="text" class="form-control" id="annee-obtention"
+											placeholder="Annee d'obtention..."
+											th:field="*{anneeObtention}">
+									</div>
+
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="ets-origine">Etablissement d'origine</label> <input
+											type="text" class="form-control" id="ets-origine"
+											placeholder="Etablissement d'origine..."
+											th:field="*{etablissementOrigine}">
+									</div>
+									<div class="form-group">
+										<label for="classe">Classe <span class="required">*</span>
+										</label> <select th:unless="${param.classe}" name="classe"
+											th:field="*{classe}" class="form-control">
+											<option th:each="classe: ${classes}" th:value="${{classe}}"
+												th:text="${classe.name}"></option>
+										</select> <input th:if="${param.classe}" type="text" name="classe"
+											th:field="*{classe}" class="form-control "
+											readonly>
+									</div>
+								</div>
+							</div>
+							<div class="box-footer">
+							<div class="form-group">
+								<button class="btn btn-default">Annuler</button>
+								<input type="submit" value="Enregistrer"
+									class="btn btn-success pull-right">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</section>
+</body>
+</html>

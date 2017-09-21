@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragments/layout}"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Home</title>
+
+</head>
+
+<body data-ng-app="MyApp">
+
+	<!-- page content -->
+	<div class="right_col" role="main" data-layout-fragment="content">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="x_panel">
+				<div class="x_title">
+					<h2>
+						Gestion des periodes <small>Listing </small>
+					</h2>
+					<a th:href="@{/periodes/add}" class="btn btn-md btn-success pull-right"><i class="fa fa-plus-circle"></i> Ajouter
+						periode</a>
+					<div class="clearfix"></div>
+				</div>
+				<div class="x_content" style="display: block;">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Periode</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr th:each="periode:${periodes}">
+								<td th:text="${periode.id}"></td>
+								<td th:text="${periode.name}"></td>
+								<td><a th:href="@{'/periodes/edit/' + ${periode.id} }" class="btn btn-default btn-xs">Modifier</a>
+									<a th:href="@{'/periodes/delete/' + ${periode.id} }" class="btn btn-info btn-xs">Suppr.</a>
+									<a th:href="@{/periodes}" class="btn btn-primary btn-xs">
+										Voir <span class="fa fa-search"></span>
+									</a>
+									</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+	<!-- /page content -->
+</body>
+</html>

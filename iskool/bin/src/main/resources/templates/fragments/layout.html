@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html style="height: auto; min-height: 100%;"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">EAA
+	| Systeme de Gestion d'Etablissement Scolaire</title>
+<!-- Tell the browser to be responsive to screen width -->
+<meta
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport">
+<!-- Bootstrap 3.3.6 -->
+<link rel="stylesheet"
+	th:href="@{/webjars/AdminLTE/bootstrap/css/bootstrap.min.css}">
+<!-- Font Awesome -->
+<link rel="stylesheet"
+	th:href="@{/webjars/font-awesome/css/font-awesome.min.css}">
+<!-- Ionicons -->
+<link rel="stylesheet"
+	th:href="@{/webjars/ionicons/css/ionicons.min.css}">
+<!-- jvectormap -->
+<link rel="stylesheet"
+	th:href="@{/webjars/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.css}">
+<!-- Theme style -->
+<link rel="stylesheet"
+	th:href="@{/webjars/AdminLTE/dist/css/AdminLTE.min.css}">
+<!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+<link rel="stylesheet"
+	th:href="@{/webjars/AdminLTE/dist/css/skins/_all-skins.min.css}">
+<link rel="stylesheet" th:href="@{/webjars/AdminLTE/plugins/datepicker/datepicker3.css}">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+<!-- Google Font -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
+<!-- the fixed layout is not compatible with sidebar-mini -->
+<body class="skin-blue sidebar-mini "
+	style="height: auto; min-height: 100%;">
+	<!-- Site wrapper -->
+	<div class="wrapper" style="height: auto; min-height: 100%;">
+
+		<header th:replace="fragments/frag-header::header"></header>
+
+		<!-- =============================================== -->
+
+		<!-- Left side column. contains the sidebar -->
+		<aside class="main-sidebar"
+			data-th-replace="fragments/frag-main-sidebar::main-sidebar"></aside>
+
+		<!-- =============================================== -->
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper" style="min-height: 426.2px;">
+
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>
+					iSkool <small>Systeme de gestion d'etablissement scolaire</small>
+				</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-calendar"></i> Annee scolaire</a></li>
+					<li><a href="#">2017-2018</a></li>
+				</ol>
+			</section>
+
+			<!-- Main content -->
+			<section class="content" layout:fragment="content"></section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+
+		<footer class="main-footer ">
+			<div class="pull-right hidden-xs">
+				<b>Version</b> 1.0
+			</div>
+			<strong>Copyright © 2017 <a href="#">iSkool</a>.
+			</strong> Tous droits reserves.
+		</footer>
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark"
+			data-th-replace="fragments/frag-control-sidebar::control-sidebar"></aside>
+	</div>
+	<!-- ./wrapper -->
+
+	<!-- jQuery 2.2.3 -->
+	<script async="" src="//www.google-analytics.com/analytics.js"></script>
+	<script
+		th:src="@{/webjars/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js}"></script>
+	<!-- Bootstrap 3.3.6 -->
+	<script th:src="@{/webjars/AdminLTE/bootstrap/js/bootstrap.min.js}"></script>
+	<!-- SlimScroll -->
+	<script
+		th:src="@{/webjars/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js}"></script>
+	<!-- FastClick -->
+	<script
+		th:src="@{/webjars/AdminLTE/plugins/fastclick/fastclick.min.js}"></script>
+	<!-- AdminLTE App -->
+	<script th:src="@{/webjars/AdminLTE/dist/js/app.min.js}"></script>
+	<!-- Charts JS plugin -->
+	<script th:src="@{/webjars/AdminLTE/plugins/chartjs/Chart.min.js}"></script>
+	<!-- AdminLTE for demo purposes -->
+	<!--  <script th:src="@{/js/demo.js}"></script> --> 
+	<script src="js/chart.js"></script>
+	<script th:src="@{/webjars/AdminLTE/plugins/datepicker/bootstrap-datepicker.js}"></script>
+	<script>
+
+		$('.datepicker').datepicker({
+			autoclose : true
+		})
+	</script>
+</body>
+</html>

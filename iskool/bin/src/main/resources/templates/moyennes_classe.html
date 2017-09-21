@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragments/layout}"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title> Calcul Moyennes  </title>
+
+</head>
+
+<body data-ng-app="MyApp">
+
+	<!-- page content -->
+	<div class="right_col" role="main" data-layout-fragment="content">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="box">
+				<div class="box-header with-border">
+					<h3 class="box-title">Moyennes
+					</h3>
+					
+					<div class="clearfix"></div>
+				</div>
+				<div class="box-body" style="display: block;" >
+					<a  class="btn btn-md btn-success pull-right"><i
+						class="fa fa-print"></i> Imprimer </a>
+				</div>
+				<div class="box-footer"></div>
+			</div>
+		</div>
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="box">
+				<div class="box-header with-border">
+					<div class="clearfix"></div>
+				</div>
+				<div class="box-body">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Classe</th>
+								<th>Nom</th>
+								<th>Prenom</th>
+								<th>Moyenne</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr th:each="moyenne:${moyennes}">
+								<td th:text="${moyenne.eleve.classe.name}"></td>
+								<td th:text="${moyenne.eleve.nom}"></td>
+								<td th:text="${moyenne.eleve.prenom}"></td>
+								<td th:text="${#numbers.formatDecimal(moyenne.moyenne,2,2,'COMMA')}"></td>
+								<td><a th:href="@{/notes/eleve/{id}(id=${moyenne.eleve.id}) }"
+									class="btn btn-primary btn-xs"> Voir notes <span
+										class="fa fa-pencil"></span>
+								</a></td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+				<div class="box-footer"></div>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- /page content -->
+</body>
+</html>
